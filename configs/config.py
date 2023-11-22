@@ -72,9 +72,12 @@ class Config:
     def arg_parse() -> tuple:
         exe = sys.executable or "python"
         parser = argparse.ArgumentParser()
-        parser.add_argument("--port", type=int, default=7865, help="Listen port")
-        parser.add_argument("--pycmd", type=str, default=exe, help="Python command")
-        parser.add_argument("--colab", action="store_true", help="Launch in colab")
+        parser.add_argument("--port", type=int,
+                            default=7865, help="Listen port")
+        parser.add_argument("--pycmd", type=str,
+                            default=exe, help="Python command")
+        parser.add_argument("--colab", action="store_true",
+                            help="Launch in colab")
         parser.add_argument(
             "--noparallel", action="store_true", help="Disable parallel processing"
         )
@@ -222,7 +225,8 @@ class Config:
             # if self.device != "cpu":
             import torch_directml
 
-            self.device = torch_directml.device(torch_directml.default_device())
+            self.device = torch_directml.device(
+                torch_directml.default_device())
             self.is_half = False
         else:
             if self.instead:
